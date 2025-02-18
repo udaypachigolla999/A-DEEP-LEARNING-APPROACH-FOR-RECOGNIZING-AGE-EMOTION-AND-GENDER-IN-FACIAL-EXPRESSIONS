@@ -28,48 +28,32 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 # Specify the file path relative to the script directory
-json_file_path = os.path.join(script_dir, "emotion_model.json")
+json_file_path = os.path.join(script_dir, "models/emotion_model.json")
 
 # Open the file
 with open(json_file_path, 'r') as json_file:
     loaded_model_json = json_file.read()
 
-# Load json file and create model
-# json_file = open("Facial_1\emotion_modelnew2.json", 'r')
-# loaded_model_json = json_file.read()
-# json_file.close()
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-
 emotion_model = model_from_json(loaded_model_json)
 
-weights_file_path = os.path.join(script_dir, "emotion_model.weights.h5")
+weights_file_path = os.path.join(script_dir, "models/emotion_model.weights.h5")
 emotion_model.load_weights(weights_file_path)
 
 # Load gender detection model
-genderProto = os.path.join(script_dir, "gender_deploy.prototxt")
-genderModel = os.path.join(script_dir, "gender_net.caffemodel")
+genderProto = os.path.join(script_dir, "models/gender_deploy.prototxt")
+genderModel = os.path.join(script_dir, "models/gender_net.caffemodel")
 genderNet = cv2.dnn.readNet(genderModel, genderProto)
 
 # Load age detection model
-age_proto = os.path.join(script_dir, "age_deploy.prototxt")
-age_model = os.path.join(script_dir, "age_net.caffemodel")
+age_proto = os.path.join(script_dir, "models/age_deploy.prototxt")
+age_model = os.path.join(script_dir, "models/age_net.caffemodel")
 age_net = cv2.dnn.readNet(age_model, age_proto)
-
 
 
 print("Loaded model from disk")
 
-# start the webcam feed
-#cap = cv2.VideoCapture(0)
 
 
-# By Video Path
-# video_file_path = os.path.join(script_dir, "video1.mp4")
-# cap = cv2.VideoCapture(video_file_path)
-
-#cap = cv2.VideoCapture("C:\\Users\\UDAY\\Downloads\\video1.mp4")
 video_uploaded=False
 cap=None
 detection_paused=threading.Event()
@@ -98,7 +82,6 @@ def gen():
             face_cascade_path = os.path.join(script_dir, 'haarcascades', 'haarcascade_frontalface_default.xml')
             face_detector = cv2.CascadeClassifier(face_cascade_path)
 
-            #face_detector = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
             num_faces = face_detector.detectMultiScale(gray_frame, scaleFactor=1.3, minNeighbors=5)
@@ -140,7 +123,7 @@ def gen():
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + b'' + b'\r\n\r\n')
 
-# Add this route after the definition of the 'gen' function
+
 @app.route('/upload_video', methods=['POST'])
 def upload_video():
     global video_uploaded,cap,detection_paused,previous_detection_state
@@ -191,8 +174,6 @@ def resume_detection():
     global detection_paused
     detection_paused.clear()
     return 'Detection resumed', 200
-
-
 
 
 if __name__ == '__main__':
