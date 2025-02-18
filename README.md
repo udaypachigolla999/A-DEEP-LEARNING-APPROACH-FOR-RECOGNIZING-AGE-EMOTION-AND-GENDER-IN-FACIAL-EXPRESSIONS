@@ -48,11 +48,6 @@ Facial_1/
 ## Installation & Setup
 ### Prerequisites
 - **Python 3.10+**
-- Install dependencies using:
-
-```sh
-pip install -r requirements.txt
-```
 
 ### Running the Application
 1. Clone this repository:
@@ -60,15 +55,20 @@ pip install -r requirements.txt
     git clone https://github.com/udaypachigolla999/A-DEEP-LEARNING-APPROACH-FOR-RECOGNIZING-AGE-EMOTION-AND-GENDER-IN-FACIAL-EXPRESSIONS.git
     cd A-DEEP-LEARNING-APPROACH-FOR-RECOGNIZING-AGE-EMOTION-AND-GENDER-IN-FACIAL-EXPRESSIONS
     ```
-2. Run the Flask server:
+2. Install dependencies using:
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+3. Run the Flask server:
     ```sh
     python app.py
     ```
-3. Open a web browser and navigate to:
+4. Open a web browser and navigate to:
     ```
     http://127.0.0.1:5000/
     ```
-4. Upload a video and start facial recognition!
+5. Upload a video and start facial recognition!
 
 ## Usage
 - Click **Upload Video** and select a `.mp4` or `.avi` file.
@@ -82,7 +82,7 @@ pip install -r requirements.txt
 - Enhance the UI/UX for a more interactive experience.
 
 ## Contributors
-- **Uday Pachigolla** (https://github.com/udaypachigolla999/)
+- [**Uday Pachigolla**](https://github.com/udaypachigolla999/)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
