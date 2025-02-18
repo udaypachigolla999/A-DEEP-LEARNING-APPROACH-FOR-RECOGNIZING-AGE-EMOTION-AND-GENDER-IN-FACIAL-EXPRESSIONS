@@ -81,7 +81,7 @@ Facial_1/
 - Extend emotion categories using advanced deep learning models.
 - Enhance the UI/UX for a more interactive experience.
 
-## **Contributors**
+## Contributors
 Feel free to fork this repository and contribute to the project!
 
 - [**Uday Pachigolla**](https://github.com/udaypachigolla999/)
