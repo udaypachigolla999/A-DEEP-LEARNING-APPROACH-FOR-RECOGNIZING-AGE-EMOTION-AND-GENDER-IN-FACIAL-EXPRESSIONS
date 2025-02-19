@@ -20,7 +20,7 @@ This project implements an **Age, Emotion, and Gender Recognition System** using
 
 ## Project Structure
 ```
-Facial_1/
+Facial_Analyzer/
 │── haarcascades/
 │   ├── haarcascade_frontalface_default.xml
 │
@@ -47,7 +47,7 @@ Facial_1/
 
 ## Installation & Setup
 ### Prerequisites
-- **Python 3.10+**
+- **Python 3.10**
 
 ### Running the Application
 1. Clone this repository:
